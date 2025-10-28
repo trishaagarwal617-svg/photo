@@ -17,10 +17,90 @@
                 document.getElementById("pic").style.display="none";
             }
         }
+        document.addEventListener("DOMContentLoaded", () => {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const body = document.body;
+
+  setInterval(() => {
+    const span = document.createElement("span");
+    span.className = "falling-letter";
+    span.textContent = letters[Math.floor(Math.random() * letters.length)];
+    span.style.left = Math.random() * window.innerWidth + "px";
+    body.appendChild(span);
+
+    setTimeout(() => {
+      span.remove();
+    }, 5000);
+  }, 300);
+});
         </script>
-        <syle>
-            
-        </syle>
+    <style>
+  /* 1. Bold heading in sea blue color */
+  h1 {
+    color: #0077be; /* Sea blue */
+    font-weight: bold;
+  }
+
+  /* 2. Light blue background with falling letters animation */
+  body {
+    background-color: #add8e6; /* Light blue */
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+  }
+
+  /* Falling letters effect */
+  @keyframes fall {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 1;
+    }
+  }
+
+  .falling-letter {
+    position: absolute;
+    top: -2rem;
+    font-size: 2rem;
+    color: #0077be;
+    animation: fall 5s linear infinite;
+  }
+
+  /* 3. Dark blue background for the image box */
+  .dark-box {
+    background-color: #00008b; /* Dark blue */
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  button {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    background-color: #007BFF; /* Bright blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00f, 0 0 30px #00f;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgb(0, 255, 68);
+    background-color: #02bf21; 
+  }
+  button:active{
+    transform: scale(0.8);
+    background-color: #c4ad00;
+     box-shadow: 0 0 20px rgb(208, 255, 0);
+  }
+
+</style>
+
     </head>
     <body>
         <center>
@@ -30,9 +110,8 @@
         <br><br>
         <button onclick ="check()">Go</button>
         <br><br>
-        <div id="pic" style="display: none;"><img src="./Snapchat.jpg" height="200" width="200"></div>
+        <div id="pic" class="dark-box" style="display: none;"><img src="./bhoovi1.jpg" height="200" width="200"></div>
         <p id="res"></p>
         </center>
     </body>
 </html>
-
